@@ -1,10 +1,15 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 import Header from '../component/Header'
+import Footer from '../component/footer'
 
-export default function MainLayout() {
+const  MainLayout = ({control, setControl})=> {
   return (
     <div>
-        <Header></Header>
+        <Header control={control} setControl={setControl}/>
+        <Outlet control={control} setControl={setControl}/>
+        <Footer/>
     </div>
   )
 }
+export default MainLayout
