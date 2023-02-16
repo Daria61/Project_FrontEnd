@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { NavLink } from 'react-router-dom'
 export default function NewReleases() {
 
     const [data , setData] = useState()
@@ -44,7 +45,9 @@ export default function NewReleases() {
             return(
                 <div className='col-4 p-3'  >
                     <div>
-                        <img src={a.thumb} style={{objectFit: "cover", height: "350px"}} className="w-100" alt="pic"/>
+                       <NavLink to={`/shop/${a.id}`}>
+                       <img src={a.thumb} style={{objectFit: "cover", height: "350px"}} className="w-100" alt="pic"/>
+                       </NavLink>
                     </div>
                     <div className='d-flex justify-content-between mt-2'>
                     <p>{a.productName}</p>

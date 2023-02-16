@@ -20,7 +20,7 @@ p{
 .d-flex{
   padding: 0;
 }
-.col-3 ,.col, .col-6, .col-4{
+.col-3 ,.col, .col-6, .col-4, .col-md-6{
   padding: 0;
 }
 .col-md-10{
@@ -65,10 +65,25 @@ p{
   cursor: pointer;
   color: white;
 }
+.catehoverF:hover{
+  cursor: pointer;
+}
 .menuHover:hover{
   color: black;
   cursor: pointer;
 }
 .addhover:hover{
   background-color: #BDE4FF  ;
+}
+.button{
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: 0;
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+}
+.button:hover{
+  background-color: #272727;
 }

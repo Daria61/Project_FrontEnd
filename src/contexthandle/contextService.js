@@ -1,7 +1,6 @@
 import { SignInContext } from "./contextCreate";
 
-
-const ContextService=({children, signAdmin , setSignAdmin})=>{
+const ContextServiceAdmin=({children, signAdmin , setSignAdmin})=>{
     return(
          <SignInContext.Provider value={{signAdmin, setSignAdmin}}>
             {children}
@@ -9,4 +8,5 @@ const ContextService=({children, signAdmin , setSignAdmin})=>{
     )
 }
 
-export default ContextService
+export default ContextServiceAdmin
+

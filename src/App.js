@@ -12,24 +12,40 @@ import AdminProducts from './adminPages/adminProducts';
 import AdminCategory from './adminPages/adminCategory';
 import UsersDetail from './adminPages/usersDetail';
 import AddProduct from './adminPages/addProduct';
-import ContextService from './contexthandle/contextService';
+import ContextServiceAdmin from './contexthandle/contextService';
+import ContextService from './contexthandle/mainContextService';
+import Sale from './pages/sale';
 import Shop from './pages/shop';
+import Wallet from "./pages/wallet"
+import Detail from './pages/detail';
+import Login from './pages/login';
+import User from './pages/user';
 function App() {
   
   const [signAdmin, setSignAdmin] = useState([])
   const [control, setControl] = useState(false)
+  const [filter, setFilter] = useState()
+  const [searching , setSearching ] = useState()
+  const [user, setUser] = useState()
   
 
   return (
      <>
-     <Routes>
+    <ContextService filter={filter} setFilter={setFilter} searching={searching} setSearching={setSearching} user={user} setUser={setUser}>
+    <Routes>
       <Route element={<MainLayout control={control} setControl={setControl}/>}>
         <Route index path="/" element={<Home control={control} setControl={setControl} />}/>
         <Route path="/shop" element={<Shop/>}></Route>
+        <Route path="/shop/:id" element={<Detail/>}></Route>
+        <Route path="/sale" element={<Sale/>}></Route>
+        <Route path="/wallet" element={<Wallet/>}></Route>
+        <Route path="login" element={<Login/>}></Route>
+        <Route path='/user' element={<User/>}></Route>
       </Route>
      </Routes>
+    </ContextService>
 
-    <ContextService signAdmin={signAdmin} setSignAdmin={setSignAdmin}>
+    {/* <ContextServiceAdmin signAdmin={signAdmin} setSignAdmin={setSignAdmin}>
     <Routes>
       <Route exact path='/sign' element={<AdminSign/>}></Route>
       <Route element={<AdminLay signAdmin={signAdmin}/>}>
@@ -42,7 +58,7 @@ function App() {
         <Route path="/staffs" element={<AdminStaffs/>}></Route>
       </Route>
     </Routes>
-    </ContextService>
+    </ContextServiceAdmin> */}
     </>
   )
 }

@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useContext } from 'react'
+import {useNavigate} from "react-router-dom"
+import { Filter } from '../contexthandle/contextCreate'
 export default function Footer() {
+
+    const {filter, setFilter} = useContext(Filter)
+
+    const navigate =  useNavigate()
 
     const [cate, setCate] = useState()
     useEffect(()=>{
@@ -25,7 +32,7 @@ export default function Footer() {
                 <div className='col-4'>
                     <h5 className='mb-3'>CATEGORIES</h5>
                     {cate?.map((a)=>{
-                        return ( <p style={{color: "#808B96"}}><a href='a'>{a.category}</a></p>)
+                        return ( <p style={{color: "#808B96"}} className="catehoverF" onClick={()=> {setFilter(a.id); navigate("/shop")} }>{a.category}</p>)
                     })}
                 </div>
                 <div className='col-4'>

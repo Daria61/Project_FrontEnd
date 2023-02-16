@@ -72,7 +72,7 @@ export default function AdminCategory() {
         <div className='row d-flex justify-content-start'>
           {category?.map((a, index)=>{
             return(
-              <div key={index} className="col-3">
+              <div key={index} className="col-4">
                 <div className='border rounded  m-1 catehover p-3' style={{position:"relative"}} >
                   <p style={{fontSize: "20px"}}>{a.category}</p> 
                   <i class="bi bi-x " style={{position: "absolute", top :"5px", right:"5px"}} onClick={()=>deleteCate(a.id)}></i>
