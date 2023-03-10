@@ -42,6 +42,11 @@ export default function AdminLay() {
                 <i className="bi bi-person-hearts"></i>
                 <p className='menuHover'>Staffs</p>
               </NavLink>
+              <NavLink to="/design"className=" text-decoration-none d-flex my-3 gap-2 p-2  rounded" style={({isActive})=>({
+                backgroundColor: isActive? "#8DC8FF" : "white" , color: isActive? "#0068CA ": "#ccc"})} >
+                <i class="bi bi-heart-pulse-fill"></i>
+                <p className='menuHover'>Site Design</p>
+              </NavLink>
             </div>
 
 

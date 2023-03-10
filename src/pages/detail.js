@@ -10,7 +10,7 @@ export default function Detail() {
 
     useEffect(()=>{
         axios.get(`http://localhost:8080/api/products/${id}`)
-        .then((res)=> {setData(res.data.result[0]); console.log(res.data.result[0]);}, err=> console.log(err))
+        .then((res)=> {setData(res.data.result[0]) }, err=> console.log(err))
     },[])
 
   return (

@@ -129,8 +129,8 @@ export default function AddProduct() {
                 arrN.push(a?.data.secure_url)
             });
 
-           setAddAdmin({...addPro, img: arrN})
-        setStart(false)
+          setAddAdmin({...addPro, img: arrN})
+          setStart(false)
       }
       
   return (
@@ -205,9 +205,7 @@ export default function AddProduct() {
             </div>
             <div>
             <p className='text-start m-1'style={{fontWeight: "500"}} >Img<span className='text-danger'>*</span></p>
-            <input type="file" className="form-control"  onChange={(e)=>{
-                FirstArr.push(e.target.files)
-            }} multiple />
+            <input type="file" className="form-control"  onChange={(e)=>{FirstArr.push(e.target.files)}} multiple />
             <div className="d-flex gap-2">
             <button className="btn btn-primary mt-2" onClick={()=> {sendImgs(FirstArr); setStart(true)} }> Upload file</button>
             <p className='text-start' >{start? "Uploading": "" } </p>

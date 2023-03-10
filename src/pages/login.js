@@ -11,6 +11,7 @@ export default function Login() {
         }
     },[])
 
+    const mail = localStorage.getItem("email")
     const obj = {
         "name": "",
         "email": "",
@@ -19,7 +20,7 @@ export default function Login() {
      }
 
      const log ={
-        email: "",
+        email: mail? mail : "" ,
         password: ""
      }
 
@@ -28,26 +29,30 @@ export default function Login() {
      const [login, setLogin] = useState(log)
      const {user, setUser} = useContext(UserLogin)
      const [check , setCheck] = useState(false)
+     const [remember, setRemember] = useState(false)
 
 
     const signIn =()=>{
         if(!login.email && !login.password){
             alert("Please fill all form")
         }else{
+            if(remember){
+                localStorage.setItem("email", user.email)
+            }
             axios.post("http://localhost:8080/api/user/login", login)
-        .then((res)=> {res.data.status? 
+            .then((res)=> {res.data.status? 
             setUser(res.data.result) : alert("Not Found")}, err=> console.log(err))
 
         if(user){
             localStorage.setItem("username", user?.name)
-            navigate("/")
+            localStorage.setItem("id", user?.id)
+            navigate("/user")
             setLogin(log)
         }
         }
     }
 
     const create =()=>{
-        console.log(newUser);
         if(!newUser.email && !newUser.password && !newUser.name && !newUser.phone){
             alert("Please fill all")
         } 
@@ -58,7 +63,9 @@ export default function Login() {
             alert("fill correct mail")
         }
         axios.post("http://localhost:8080/api/user", newUser)
-        .then((res)=> console.log(res.data.result))
+        .then((res)=> console.log(res.data.result), err=> console.log(err))
+        setNewUser(obj)
+        alert("Register succed")
     }
 
   return (
@@ -74,7 +81,7 @@ export default function Login() {
                 </div>
                 <div className='row d-flex  m-2' style={{maxWidth: "350px"}}>
                     <div className='col-6'>
-                        <input type="checkbox" id="remember" className='me-2'/>
+                        <input onChange={(e)=>setRemember(e.target.checked)} type="checkbox" id="remember"  className='me-2'/>
                         <label htmlFor='remember'>Remember Me</label>
                     </div>
                     <div className='col-6 text-end'>

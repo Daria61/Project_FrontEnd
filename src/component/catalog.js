@@ -1,27 +1,18 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState,  useContext } from 'react'
 import axios from 'axios'
-import {Filter} from "../contexthandle/contextCreate"
 import {NavLink} from "react-router-dom"
+import {Filter} from "../contexthandle/contextCreate"
 export default function Catalog() {
 
+  const [data, setData] = useState()
   const {filter, setFilter} = useContext(Filter)
-    // const [pro, setPro] = useState()
-    // const [cate , setCate] = useState({"women" : "", "men" : ""})
-    // const [women , setWomen] =useState()
 
-    // useEffect(()=>{
-    //     axios.get("http://localhost:8080/api/products")
-    //     .then((res)=>setPro(res.data.result))
-    // }, [])
+    useEffect(()=>{
+        axios.get("http://localhost:8080/api/design")
+        .then((res)=>setData(res.data.result))
+    }, [])
 
-    // useEffect(()=>{
-    //     axios.get("http://localhost:8080/api/category")
-    //     .then((res)=>setCate({...cate, women: res.data.result.map((a)=> a.category === "Women") , men : res.data.result.map((a)=> a.category === "Men")}))
-    // }, [])
-
-    // const filt = pro?.filter((a)=>{ return a.category?.includes(cate.women?.id)? a : ""})
     
-
   return (
     <div className='mt-5 mb-5'>
         <h3 style={{fontWeight: 400}}>CATALOG</h3>
